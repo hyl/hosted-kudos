@@ -7,6 +7,13 @@ var redis = require('redis');
 //configure current count
 var currentcount;
 
+//allow CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 redisClient.on('error', function(err) {
   console.log('[ERR] ' + err);
 })
